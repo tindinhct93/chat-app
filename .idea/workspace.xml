@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34a8319f-b9e5-4cac-a31c-1352641baaf4" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/chat.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/chat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/users.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/utils/messages.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +57,7 @@
       <workItem from="1627564278867" duration="1066000" />
       <workItem from="1627565677626" duration="4330000" />
       <workItem from="1627612442288" duration="8479000" />
-      <workItem from="1627633624150" duration="12508000" />
+      <workItem from="1627633624150" duration="13034000" />
     </task>
     <servers />
   </component>
