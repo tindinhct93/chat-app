@@ -49,6 +49,6 @@ io.on('connection', (socket)=>{
     })
 });
 
-server.listen(port,()=>{
+server.listen(port, "192.168.1.19", ()=>{
     console.log('server is ok on ',port)
 })

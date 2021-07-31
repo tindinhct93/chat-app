@@ -1,5 +1,12 @@
 const socket = io()
 
+function calcVH() {
+    $('.chat').innerHeight( $(this).innerHeight() );
+}
+$(window).on('load resize orientationchange', function() {
+    calcVH();
+});
+
 const $messageForm = document.querySelector('#message-form');
 const $messageFormInput = document.querySelector('input');
 const $messageFormButton = document.querySelector('button');

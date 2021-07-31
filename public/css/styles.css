@@ -7,11 +7,11 @@
 }
 
 html {
-    font-size: 16px;
+    font-size: 5vw;
 }
 
 input {
-    font-size: 14px;
+    font-size: 5vw;
 }
 
 body {
@@ -87,10 +87,11 @@ button:disabled {
 
 .chat {
     display: flex;
+    max-height:  100vh;
 }
 
 .chat__sidebar {
-    height: 100vh;
+    max-height: 100vh;
     color: white;
     background: #333744;
     width: 225px;
@@ -103,7 +104,6 @@ button:disabled {
     flex-grow: 1;
     display: flex;
     flex-direction: column;
-    max-height: 100vh;
 }
 
 .chat__messages {
@@ -150,7 +150,7 @@ button:disabled {
 
 .compose input {
     border: 1px solid #eeeeee;
-    width: 100%;
+    width: 80%;
     padding: 12px;
     margin: 0 16px 0 0;
     flex-grow: 1;
@@ -158,6 +158,7 @@ button:disabled {
 
 .compose button {
     font-size: 14px;
+    width: 20%;
 }
 
 /* Chat Sidebar Styles */
