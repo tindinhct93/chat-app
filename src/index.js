@@ -176,7 +176,7 @@ server.listen(port,"192.168.1.19", ()=>{
 */
 
 app.get('/sync',async (req,res)=> {
-    let model =require('./models');
+    let model =require('../models');
     await model.sequelize.sync();
     res.send('Sync completed');
 })
