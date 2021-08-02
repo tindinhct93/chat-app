@@ -48,7 +48,7 @@ const LOGIN_ERR_MSG = 'Incorrect username or password';
 let hbs = expressHbs.create({
     handlebars:require('handlebars'),
     extname: 'hbs',
-    layout: false,
+    defaultLayout: false,
     helpers: {
         displayTime: function (time) {
             return moment(time).format("hh:mm a")
