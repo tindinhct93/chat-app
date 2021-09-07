@@ -3,6 +3,7 @@ const http = require('http');
 
 const express = require('express');
 const socketio = require('socket.io');
+const secretCookiesKeys = process.env.cookieskey || "TIN"
 
 const models = require('../models');
 const {User,Message} = models;
@@ -13,7 +14,7 @@ const TODAY_START = new Date().setHours(0, 0, 0, 0);
 const Filter = require('bad-words');
 const {generateMessage} = require('./utils/messages.js')
 const expressHbs = require('express-handlebars');
-const moment = require('moment')
+const moment = require('moment');
 
 const app = express();
 //Body Parser
@@ -23,7 +24,7 @@ app.use(bodyParser.urlencoded({extended:false}))
 
 //Cookie parser
 let cookieParser = require('cookie-parser');
-app.use(cookieParser('tin'));
+app.use(cookieParser(secretCookiesKeys));
 
 // Static
 app.use('/img',(req,res,next)=> {
@@ -85,7 +86,7 @@ app.post('/login',async (req,res,next)=> {
             res.cookie('user',user.username, {
                 signed:true,
                 httpOnly: true,
-                maxAge: 30000000000,
+                maxAge: 3600*24*30,
             });
             res.locals.user = user.username;
             return res.redirect('/');
@@ -108,7 +109,8 @@ app.get('/',async (req,res)=>{
         res.locals.type = ALERT_DANGER;
         return res.redirect('/login')
     }
-    res.locals.user = req.signedCookies.user;
+    let user = req.signedCookies.user;
+    res.locals.user = user;
     let messages = await Message.findAll({
         where: {
             createdAt : {
@@ -117,9 +119,10 @@ app.get('/',async (req,res)=>{
         },
         include: [{model: User}],
     })
-    messageHTML = "";
+    let messageHTML = ""
     messages.forEach(item => {
-        messageHTML += `<div class="message">
+        let classforUser = (item.User.username=== user) ? "sameUser" : ""
+        messageHTML += `<div class="message ${classforUser}">
     <p>
         <span class="message__name">${item.User ? item.User.username :null}</span>
         <span class="message__meta">${moment(item.createdAt).format("hh:mm a")}</span>

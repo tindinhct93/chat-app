@@ -14,6 +14,7 @@ const $sendLocationButton = document.querySelector('#send-location');
 const $messages = document.querySelector('#messages');
 const $sidebar = document.querySelector('#sidebar');
 const $users = document.querySelector('#users');
+const $username = document.querySelector('#username');
 
 gotoBottom('messages');
 socket.on('join', (room)=>{
@@ -41,7 +42,6 @@ socket.on('message', (message)=>{
     gotoBottom('messages');
 })
 
-
 $messageForm.addEventListener('submit',(e)=>{
     e.preventDefault();
     if( $messageFormInput.value == '') {
@@ -66,7 +66,7 @@ $sendLocationButton.addEventListener('click',()=>{
     if (!navigator.geolocation) {
         return alert("Can't get logcation")
     }
-
+x
     $sendLocationButton.setAttribute('disabled','disabled ');
 
     navigator.geolocation.getCurrentPosition((pos)=>{
@@ -84,12 +84,14 @@ $sendLocationButton.addEventListener('click',()=>{
 
 
 function createHTMLMesssage (res) {
-    let time = new Date(res.createdAt)
-    return `<div class="message">
+    let userLogin = $username.innerHTML;
+    let time = new Date(res.createdAt);
+    let classforUser = (res.user === userLogin) ? "sameUser" : ""
+    return `<div class="message ${classforUser}">
             <p>
                 <span class="message__name">${res.user}</span>
                 <span class="message__meta">${moment(time).format("hh:mm a")}</span>
-            </p>
+            </p>    
             <p  class="message">${res.text}</p>
         </div>`
 }
