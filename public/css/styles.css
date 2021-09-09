@@ -199,3 +199,92 @@ button:disabled {
     font-weight: 300;
     padding: 12px 24px 0 24px;
 }
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+}
+
+button {
+    cursor: pointer;
+    padding: 12px;
+    background: #7C5CBF;
+    border: none;
+    color: white;
+    font-size: 16px;
+    transition: background .3s ease;
+}
+
+.call-btn {
+    background-color: darkslategrey;
+    color: antiquewhite;
+    font-size: 5vh;
+    margin: 0 auto;
+}
+
+.hangup-btn {
+    background-color: darkred;
+    color: white;
+    font-size: 5vh;
+    margin: 0 auto;
+}
+
+.modal {
+    padding: 5rem;
+    background-color: whitesmoke;
+    border-radius: 2rem;
+    width: 40rem;
+    height: 20rem;
+}
+
+.inner-modal {
+    text-align: center;
+}
+
+.modal label {
+    font-size: 1.5rem;
+}
+.modal input {
+    margin: 1rem 7rem 3rem;
+    display: block;
+    padding: 1rem;
+    border-radius: 3rem;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.19);
+    border: none;
+    width:50%;
+}
+
+.connect-btn {
+    background-color: #0c1d1d;
+    color: whitesmoke;
+    font-size: 1.5rem;
+}
+
+video {
+    flex: 1 2 50%;
+    max-width: 90%;
+    max-height: 320px;
+    margin: 10px auto;
+    /* object-fit: contain; */
+}
+
+.info-container {
+    flex: 1 0 15%;
+}
+
+.call-container {
+    flex: 2 2 20%;
+}
+
+#output {
+    margin:5px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#output img {
+    margin:5px;
+    width: 25%;
+}
