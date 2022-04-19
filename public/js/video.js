@@ -25,7 +25,7 @@ window.peer = peer;
 //$('#my-video').prop('src', URL.createObjectURL(window.localStream));
 
 peer.on('open', function () {
-    window.caststatus.textContent = `Peer ID in the server is": ${peer.id}`;
+    window.caststatus.textContent = `Peer ID in the server is: ${peer.id}`;
 });
 
 const callBtn = document.querySelector('.call-btn');
@@ -58,7 +58,7 @@ function showAdminStatus (status) {
 }
 
 callBtn.addEventListener('click', function(){
-    code = prompt("Please enter your parner id");
+    code = prompt("Please enter your parner id:", "User_2");
     conn = peer.connect(code);
     setTimeout(()=>{
         call = peer.call(code, window.localStream);
