@@ -1,9 +1,10 @@
 const path = require('path');
 const http = require('http');
 
+const {ExpressPeerServer} = require('peer');
 const express = require('express');
 const socketio = require('socket.io');
-const secretCookiesKeys = process.env.cookieskey || "TIN"
+const secretCookiesKeys = process.env.cookieskey || "secretCookiesKeys"
 
 const models = require('../models');
 const {User,Message} = models;
@@ -38,6 +39,15 @@ app.use(express.static(publicDirectoryPath));
 //Appp
 
 const server = http.createServer(app);
+
+const peerServer = ExpressPeerServer(server, {
+    proxied: true,
+    debug: true,
+    path: '/myapp',
+    ssl: {}
+});
+
+app.use(peerServer);
 const io = socketio(server);
 
 //Constant
@@ -111,6 +121,7 @@ app.get('/',async (req,res)=>{
     }
     let user = req.signedCookies.user;
     res.locals.user = user;
+    // Get the message in the past to render
     let messages = await Message.findAll({
         where: {
             createdAt : {

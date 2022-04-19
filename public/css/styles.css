@@ -197,7 +197,7 @@ button:disabled {
 .users {
     list-style-type: none;
     font-weight: 300;
-    padding: 12px 24px 0 24px;
+    padding: 6px 6px 0 12px;
 }
 
 .container {
