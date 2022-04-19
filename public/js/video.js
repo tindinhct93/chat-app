@@ -21,7 +21,8 @@ const peer = new Peer($username.innerHTML, {
 
 navigator.mediaDevices.getUserMedia({video: true, audio: true}).then(stream=>window.localStream= stream);
 window.peer = peer;
-$('#my-video').prop('src', URL.createObjectURL(window.localStream));
+
+//$('#my-video').prop('src', URL.createObjectURL(window.localStream));
 
 peer.on('open', function () {
     window.caststatus.textContent = `Peer ID in the server is": ${peer.id}`;
