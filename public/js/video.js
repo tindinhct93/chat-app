@@ -58,6 +58,7 @@ callBtn.addEventListener('click', function(){
             window.remoteVideo.addEventListener('loadedmetadata', () => { // Play the video as it loads
                 window.remoteVideo.play()
             })
+            window.peerStream = stream; //E
             showConnectedContent(); //F
         });
         console.log('Ok')
