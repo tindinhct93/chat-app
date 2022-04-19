@@ -47,16 +47,6 @@ function showCallContent() {
     audioContainer.hidden = true;
 }
 
-function showAdminStatus (status) {
-    if (String(status).toLowerCase() == "true") {
-        document.getElementById('AdminStatus').innerHTML = "Admin is joined";
-        callBtn.hidden = false;
-    } else {
-        document.getElementById('AdminStatus').innerHTML = "Admin is offline";
-        callBtn.hidden = true;
-    }
-}
-
 callBtn.addEventListener('click', function(){
     code = prompt("Please enter your parner id:", "User_2");
     conn = peer.connect(code);
@@ -81,13 +71,21 @@ hangUpBtn.addEventListener('click', function (){
 })
 
 peer.on('call', function(call) {
-    window.caststatus.textContent = `Calling`;
-    call.answer(window.localStream); // A;
-    window.localVideo.srcObject = window.localStream; // C
-    window.localVideo.autoplay = true; // D
-    window.localVideo.addEventListener('loadedmetadata', () => { // Play the video as it loads
-        window.localVideo.play()
-    })
+    const answerCall = confirm("Do you want to answer?");
+    if (answerCall) {
+        window.caststatus.textContent = `Calling`;
+        call.answer(window.localStream); // A;
+        window.localVideo.srcObject = window.localStream; // C
+        window.localVideo.autoplay = true; // D
+        window.localVideo.addEventListener('loadedmetadata', () => { // Play the video as it loads
+            window.localVideo.play()
+        });
+        audioContainer.hidden = false;
+    }
+    else {
+        console.log("Call denied");
+        window.caststatus.textContent = `Reject`;
+    }
 });
 
 peer.on('error', err => console.error(err));
